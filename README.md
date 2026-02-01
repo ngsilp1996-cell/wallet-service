@@ -111,6 +111,13 @@ INTERNAL_ERROR
 - Java 17
 - Maven
 
+## Запуск через Docker
+
+В корне проекта:
+
+```bash
+docker compose up -d
+
 ### Через Maven
 
 В корне проекта:
