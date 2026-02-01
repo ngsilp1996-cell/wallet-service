@@ -1,0 +1,59 @@
+#Очевидно, что мы не можем подключится к гипотетической постгрес на тесте,
+#ибо не имеем никаких данных для датасорс.
+
+#Поэтому код для подключения к постгрес закомментирован ниже, а код для тестов идет после него.
+##############################################
+
+spring:
+  application:
+    name: wallet-service
+
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:db}:${DB_PORT:5432}/${DB_NAME:wallet_db}
+    username: ${DB_USER:wallet_user}
+    password: ${DB_PASSWORD:wallet_pass}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+    enabled: true
+
+server:
+  port: ${SERVER_PORT:8080}
+
+######################################################################
+#Тестрвый код для локального запуска!
+######################################################################
+
+#spring:
+#  application:
+#    name: wallet-service
+#
+#  datasource:
+#    url: jdbc:h2:mem:testdb;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DB_CLOSE_DELAY=-1
+#    driver-class-name: org.h2.Driver
+#    username: sa
+#    password:
+#
+#  jpa:
+#    hibernate:
+#      ddl-auto: none
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.H2Dialect
+#    open-in-view: false
+#
+#  liquibase:
+#    change-log: classpath:db/changelog/db.changelog-master.yaml
+#    enabled: true
+#
+#server:
+#  port: 8080
