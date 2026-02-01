@@ -115,8 +115,8 @@ INTERNAL_ERROR
 
 В корне проекта:
 
-```bash
-docker compose up -d
+`
+docker compose up -d`
 
 ### Через Maven
 
